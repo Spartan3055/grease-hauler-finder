@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free grease trap pump-out reminder and manifest log | FOG File</title>
+  <meta name="description" content="A free browser-based grease trap pump-out reminder and printable manifest log. Data stays in your browser’s local storage. No account required.">
+  <link rel="canonical" href="https://spartan3055.github.io/grease-hauler-finder/reminder/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#163832">
+  <meta property="og:title" content="Free grease trap pump-out reminder and manifest log | FOG File">
+  <meta property="og:description" content="A free browser-based grease trap pump-out reminder and printable manifest log. Data stays in your browser’s local storage. No account required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spartan3055.github.io/grease-hauler-finder/reminder/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://spartan3055.github.io/grease-hauler-finder/#org",
+      "name": "FOG File",
+      "url": "https://spartan3055.github.io/grease-hauler-finder/",
+      "description": "Free reference pages for official city and utility certified grease-hauler lists, plus a browser-based pump-out reminder and manifest log."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://spartan3055.github.io/grease-hauler-finder/#website",
+      "name": "FOG File",
+      "url": "https://spartan3055.github.io/grease-hauler-finder/",
+      "publisher": {
+        "@id": "https://spartan3055.github.io/grease-hauler-finder/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://spartan3055.github.io/grease-hauler-finder/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Reminder",
+          "item": "https://spartan3055.github.io/grease-hauler-finder/reminder/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="wordmark" href="../">
+      <span class="mark" aria-hidden="true">FF</span>
+      <span><strong>FOG FILE</strong><span>Certified hauler lists + pump-out log</span></span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="../">Home</a>
+      <a href="../tampa/">Tampa</a>
+      <a href="../louisville/">Louisville</a>
+      <a href="../hampton-roads/">Hampton Roads</a>
+      <a href="../reminder/" aria-current="page">Reminder + log</a>
+      <a href="../quotes/">Get quotes</a>
+      <a href="../haulers/">For haulers</a>
+    </nav>
+  </div>
+</header>
+  <main id="content">
+    <p class="crumbs"><a href="../">Home</a> / Reminder</p>
+    
+<article class="wrap">
+  <header class="page-head">
+    <h1>Grease trap pump-out reminder and manifest log</h1>
+    <p class="lede">A free, private log for restaurants and other commercial kitchens. Add each trap or interceptor, get a next-due date, and record every pump-out. Everything stays in this browser — we do not get a copy.</p>
+  </header>
+  
+<aside class="disclaimer" role="note">
+  <strong>Verify before you hire</strong>
+  <p>This is not an official city or utility website. FOG File is not affiliated with the City of Tampa, Louisville MSD, HRSD, or any company named on these pages. Official approved and certified lists change. Confirm with the city or utility that a hauler is currently on the official list before you hire them. This site is not legal advice and is not a substitute for the ordinance, policy, or your inspector.</p>
+  
+  <p><a href="../disclaimer/">Full disclaimer</a></p>
+</aside>
+  <div class="callout">
+    <p><strong>Privacy.</strong> This tool uses your browser’s local storage only. There is no account and no server behind the form. If you clear this browser’s site data, or switch phones or computers, the records will not be there unless you exported a CSV first. This log is a convenience. It is not an official city manifest. Use your city or utility’s required form when they give you one.</p>
+  </div>
+  <div id="fog-app">
+    <p class="muted" id="device-count"></p>
+    <div class="actions-row no-print">
+      <button class="btn" type="button" id="add-device">Add a device</button>
+      <button class="btn secondary" type="button" id="export-csv">Export log as CSV</button>
+      <button class="btn secondary" type="button" id="print-log">Print</button>
+      <button class="linkish" type="button" id="clear-all">Delete all saved data</button>
+    </div>
+
+    <form id="device-form" class="app-panel" hidden>
+      <h2 id="device-form-title">Add a device</h2>
+      <input type="hidden" name="id" value="">
+      <div class="form-grid">
+        <label>Device name <input name="name" required placeholder="e.g. Kitchen indoor trap"></label>
+        <label>Business name <input name="business" placeholder="Restaurant or kitchen name"></label>
+        <label class="span-2">Street address <input name="address"></label>
+        <label>City <input name="city" placeholder="Tampa, Louisville, …"></label>
+        <label>Type
+          <select name="kind">
+            <option value="">Choose one</option>
+            <option>Indoor grease trap</option>
+            <option>Outdoor grease interceptor</option>
+            <option>Lint trap</option>
+            <option>Oil/water separator</option>
+            <option>Other / not sure</option>
+          </select>
+        </label>
+        <label>Size or gallons <input name="size" placeholder="e.g. 1000 gal"></label>
+        <label>Location on site <input name="location" placeholder="e.g. behind the kitchen"></label>
+        <label>Last pumped <input type="date" name="lastPumped"></label>
+        <label>Remind me every (days) <input type="number" name="intervalDays" min="1" max="365" value="90"></label>
+      </div>
+      <p class="note">The default interval is 90 days, which is a common planning window — not a legal requirement. Use the interval your ordinance, utility, or inspector gives you. In Tampa, for example, the city’s FAQ also uses a 25% capacity rule and a weekly minimum for indoor traps.</p>
+      <div class="actions-row">
+        <button class="btn" type="submit">Save device</button>
+        <button class="btn secondary" type="button" id="cancel-device">Cancel</button>
+      </div>
+    </form>
+
+    <form id="log-form" class="app-panel" hidden>
+      <h2 id="log-form-title">Add pump-out</h2>
+      <input type="hidden" name="id" value="">
+      <input type="hidden" name="deviceId" value="">
+      <div class="form-grid">
+        <label>Pump-out date <input type="date" name="date" required></label>
+        <label>Hauler name <input name="hauler"></label>
+        <label>Hauler phone <input name="phone"></label>
+        <label>Gallons pumped <input name="gallons"></label>
+        <label>Manifest or invoice no. <input name="manifestNo"></label>
+        <label>Grease % <input name="greasePct"></label>
+        <label>Solids % <input name="solidsPct"></label>
+        <label>Disposal facility <input name="disposal"></label>
+        <label>Cost (optional) <input name="cost"></label>
+        <label class="span-2">Notes <textarea name="notes" rows="3"></textarea></label>
+      </div>
+      <div class="actions-row">
+        <button class="btn" type="submit">Save record</button>
+        <button class="btn secondary" type="button" id="cancel-log">Cancel</button>
+      </div>
+    </form>
+
+    <div id="device-list" class="device-list"></div>
+  </div>
+  <h2>Find a currently listed hauler</h2>
+  <p><a href="../tampa/">Tampa</a> · <a href="../louisville/">Louisville</a> · <a href="../hampton-roads/">Hampton Roads</a></p>
+  <script src="../reminder.js"></script>
+</article>
+  </main>
+  
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h2>FOG File</h2>
+      <p>A free reference to official certified and approved grease-hauler lists, plus a pump-out reminder that stays in your browser. Not a city, utility, or hauler website.</p>
+      <p class="tiny">Lists last retrieved from official sources on November 18, 2026. Always verify with the issuing city or utility before hiring. © 2026 FOG File.</p>
+    </div>
+    <div>
+      <h2>Pages</h2>
+      <ul>
+        <li><a href="../about/">About this site</a></li>
+        <li><a href="../disclaimer/">Disclaimer</a></li>
+        <li><a href="../reminder/">Pump-out reminder and log</a></li>
+        <li><a href="../quotes/">Get quotes</a></li>
+        <li><a href="../haulers/">For haulers</a></li>
+        <li><a href="../data/haulers.json">Hauler data (JSON)</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
